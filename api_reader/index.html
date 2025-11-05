@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOT button</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            padding: 0; margin: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif; font-size: 1rem;
+        }
+
+        .container {
+            display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1em;
+            height: 100vh;
+            background: #555; color: #fff;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .btn-led {
+            width: 50px; height: 50px;
+            border-radius: 100%;
+            background: radial-gradient(circle, rgba(255, 128, 128, 1) 0%, rgba(255, 0, 0, 1) 100%);
+            transform: rotate3d(1, 0 , 0, 45deg);
+            box-shadow: 0 10px 0 black;
+
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .btn-led:active {
+            background: radial-gradient(circle, rgba(255, 0, 0, 1) 0%, rgba(255, 128, 128, 1) 100%);
+
+            transform: rotate3d(1, 0 , 0, 45deg) translateY(5px);
+            box-shadow: 0 5px 0 black;
+        }
+
+        .btn-led.blocked { cursor: not-allowed; }
+
+        .led {
+            width: 30px; height: 30px;
+            position: relative;
+            background-color: #2d2d2d;
+            border: 2px solid #000;
+            border-radius: 100%;
+        }
+
+        .led.active {
+            background: blue;
+        }
+
+        .led.active::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 30px; height: 30px;
+            background-color: blue;
+            filter: blur(15px);
+            mix-blend-mode: color-dodge;
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">press</h1>
+        <button type="button" class="btn btn-led"></button>
+        <div class="led"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
